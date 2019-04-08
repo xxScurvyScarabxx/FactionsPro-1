@@ -208,6 +208,13 @@ class FactionMain extends PluginBase implements Listener {
         $factionArray = $faction->fetchArray(SQLITE3_ASSOC);
         return $factionArray["rank"] == "Leader";
     }
+    
+    public function isCoLeader ($player) {
+        $faction = $this->db->query("SELECT * FROM master WHERE player='$player';");
+        $factionArray = $faction->fetchArray(SQLITE3_ASSOC);
+        return $factionArray["rank"] == "CoLeader";
+        
+    }
 
     public function isOfficer($player) {
         $faction = $this->db->query("SELECT * FROM master WHERE player='$player';");
